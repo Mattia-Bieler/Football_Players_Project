@@ -659,7 +659,7 @@ RankedPlayers AS (
         ROW_NUMBER() OVER (PARTITION BY p.nationality ORDER BY p.weekly_wage_euro DESC) AS rank
     FROM players_combined p
     JOIN CountryTotals ct
-      ON p.nationality = ct.country
+    ON p.nationality = ct.country
     WHERE p.weekly_wage_euro IS NOT NULL)
 -- Step 3: Select top 5 players per country based on weekly_wage_euro and order results.
 SELECT country, name, weekly_wage_euro
