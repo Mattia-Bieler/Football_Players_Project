@@ -423,7 +423,7 @@ FROM players_personalinfo;
 SELECT id, name, international_reputation, weak_foot, skill_moves 
 FROM players_personalinfo
 WHERE NOT (international_reputation BETWEEN 0 AND 5
-	AND weak_foot BETWEEN 0 AND 5
+    AND weak_foot BETWEEN 0 AND 5
     AND skill_moves BETWEEN 0 AND 5);
 	
 -- Rename the wage_k column to weekly_wage_euro.
