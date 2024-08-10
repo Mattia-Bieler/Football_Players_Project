@@ -203,28 +203,28 @@ SELECT id, name, crossing, finishing, heading_accuracy, short_passing, volleys, 
 	gk_diving, gk_handling, gk_kicking, gk_positioning, gk_reflexes
 FROM players_core_gamedetails
 WHERE NOT (crossing BETWEEN 0 AND 100
-	AND finishing BETWEEN 0 AND 100
-	AND heading_accuracy BETWEEN 0 AND 100
-	AND short_passing BETWEEN 0 AND 100
-	AND volleys BETWEEN 0 AND 100
-	AND dribbling BETWEEN 0 AND 100
-	AND curve BETWEEN 0 AND 100
-	AND fk_accuracy BETWEEN 0 AND 100
-	AND long_passing BETWEEN 0 AND 100
-	AND ball_control BETWEEN 0 AND 100
-	AND acceleration BETWEEN 0 AND 100
-	AND sprint_speed BETWEEN 0 AND 100
-	AND agility BETWEEN 0 AND 100
-	AND reactions BETWEEN 0 AND 100
-	AND balance BETWEEN 0 AND 100
-	AND shot_power BETWEEN 0 AND 100
-	AND jumping BETWEEN 0 AND 100
-	AND stamina BETWEEN 0 AND 100
-	AND strength BETWEEN 0 AND 100
-	AND long_shots BETWEEN 0 AND 100
-	AND aggression BETWEEN 0 AND 100
-	AND interceptions BETWEEN 0 AND 100
-	AND positioning BETWEEN 0 AND 100
+    AND finishing BETWEEN 0 AND 100
+    AND heading_accuracy BETWEEN 0 AND 100
+    AND short_passing BETWEEN 0 AND 100
+    AND volleys BETWEEN 0 AND 100
+    AND dribbling BETWEEN 0 AND 100
+    AND curve BETWEEN 0 AND 100
+    AND fk_accuracy BETWEEN 0 AND 100
+    AND long_passing BETWEEN 0 AND 100
+    AND ball_control BETWEEN 0 AND 100
+    AND acceleration BETWEEN 0 AND 100
+    AND sprint_speed BETWEEN 0 AND 100
+    AND agility BETWEEN 0 AND 100
+    AND reactions BETWEEN 0 AND 100
+    AND balance BETWEEN 0 AND 100
+    AND shot_power BETWEEN 0 AND 100
+    AND jumping BETWEEN 0 AND 100
+    AND stamina BETWEEN 0 AND 100
+    AND strength BETWEEN 0 AND 100
+    AND long_shots BETWEEN 0 AND 100
+    AND aggression BETWEEN 0 AND 100
+    AND interceptions BETWEEN 0 AND 100
+    AND positioning BETWEEN 0 AND 100
     AND vision BETWEEN 0 AND 100
     AND penalties BETWEEN 0 AND 100
     AND composure BETWEEN 0 AND 100
