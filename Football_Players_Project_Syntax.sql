@@ -198,9 +198,9 @@ SELECT * FROM public.players_core_gamedetails;
 -- Check for values outside expected ranges.
 SELECT id, name, crossing, finishing, heading_accuracy, short_passing, volleys, dribbling, 
     curve, fk_accuracy, long_passing, ball_control, acceleration, sprint_speed, agility, reactions, 
-	balance, shot_power, jumping, stamina, strength, long_shots, aggression, interceptions, 
+    balance, shot_power, jumping, stamina, strength, long_shots, aggression, interceptions, 
     positioning, vision, penalties, composure, marking, standing_tackle, sliding_tackle, 
-	gk_diving, gk_handling, gk_kicking, gk_positioning, gk_reflexes
+    gk_diving, gk_handling, gk_kicking, gk_positioning, gk_reflexes
 FROM players_core_gamedetails
 WHERE NOT (crossing BETWEEN 0 AND 100
     AND finishing BETWEEN 0 AND 100
@@ -388,14 +388,14 @@ SET preferred_foot = CASE WHEN preferred_foot = '0' THEN 'Unknown' ELSE preferre
     work_rate = CASE WHEN work_rate = '0' THEN 'Unknown' ELSE work_rate END,
     body_type = CASE WHEN body_type = '0' THEN 'Unknown' ELSE body_type END,
     real_face = CASE WHEN real_face = '0' THEN 'Unknown' ELSE real_face END,
-	position = CASE WHEN position = '0' THEN 'Unknown' ELSE position END,
+    position = CASE WHEN position = '0' THEN 'Unknown' ELSE position END,
     joined_month = CASE WHEN joined_month = '0' THEN 'Unknown' ELSE joined_month END;
 
 -- Set jersey_number, joined_year, contract_valid_until, height_cm, 
 -- and weight_kg to NULL where the current value is '0'.
 UPDATE players_personalinfo
 SET 
-	jersey_number = CASE WHEN jersey_number = 0 THEN NULL ELSE jersey_number END,
+    jersey_number = CASE WHEN jersey_number = 0 THEN NULL ELSE jersey_number END,
     joined_year = CASE WHEN joined_year = 0 THEN NULL ELSE joined_year END,
     contract_valid_until = CASE WHEN contract_valid_until = 0 THEN NULL ELSE contract_valid_until END,
     height_cm = CASE WHEN height_cm = 0 THEN NULL ELSE height_cm END,
@@ -550,73 +550,63 @@ GROUP BY id
 HAVING COUNT(*) > 1;
 
 -- Total number of players per country.
-SELECT nationality AS country,
-    COUNT(*) AS player_count
+SELECT nationality AS country, COUNT(*) AS player_count
 FROM players_combined
 GROUP BY nationality
 ORDER BY player_count DESC;
 
 -- Total number of players per club.
-SELECT club,
-    COUNT(*) AS player_count
+SELECT club, COUNT(*) AS player_count
 FROM players_combined
 GROUP BY club
 ORDER BY player_count DESC;
 
 -- Average age of players per country.
-SELECT nationality AS country,
-    ROUND(AVG(age), 2) AS average_age
+SELECT nationality AS country, ROUND(AVG(age), 2) AS average_age
 FROM players_combined
 GROUP BY country
 ORDER BY average_age DESC;
 
 -- Average age of players per club.
-SELECT club,
-    ROUND(AVG(age), 2) AS average_age
+SELECT club, ROUND(AVG(age), 2) AS average_age
 FROM players_combined
 GROUP BY club
 ORDER BY average_age DESC;
 
 -- Average overall of players per country.
-SELECT nationality AS country,
-    ROUND(AVG(overall), 2) AS average_overall
+SELECT nationality AS country, ROUND(AVG(overall), 2) AS average_overall
 FROM players_combined
 GROUP BY country
 ORDER BY average_overall DESC;
 
 -- Average overall of players per club.
-SELECT club,
-    ROUND(AVG(overall), 2) AS average_overall
+SELECT club, ROUND(AVG(overall), 2) AS average_overall
 FROM players_combined
 GROUP BY club
 ORDER BY average_overall DESC;
 
 -- Number of players per country with an overall score greater than or equal to 75.
-SELECT nationality AS country,
-    COUNT(*) AS player_count
+SELECT nationality AS country, COUNT(*) AS player_count
 FROM players_combined
 WHERE overall > 75
 GROUP BY country
 ORDER BY player_count DESC;
 
 -- Number of players per club with an overall score greater than or equal to 75.
-SELECT club,
-    COUNT(*) AS player_count
+SELECT club, COUNT(*) AS player_count
 FROM players_combined
 WHERE overall >= 75
 GROUP BY club
 ORDER BY player_count DESC;
 
 -- Total value of players in euros by country.
-SELECT nationality AS country,
-    SUM(value_euro) AS total_value_euro
+SELECT nationality AS country, SUM(value_euro) AS total_value_euro
 FROM players_combined
 GROUP BY country 
 ORDER BY total_value_euro DESC; 
 
 -- Total value of players in euros by club.
-SELECT club,
-    SUM(value_euro) AS total_value_euro
+SELECT club, SUM(value_euro) AS total_value_euro
 FROM players_combined
 GROUP BY club
 ORDER BY total_value_euro DESC; 
@@ -637,8 +627,7 @@ LIMIT 5;
 
 -- Step 1: Identify the top countries by total player value.
 WITH CountryTotals AS (
-    SELECT nationality AS country,
-        SUM(value_euro) AS total_value_euro
+    SELECT nationality AS country, SUM(value_euro) AS total_value_euro
     FROM players_combined
     GROUP BY country
     ORDER BY total_value_euro DESC
@@ -667,7 +656,7 @@ WITH CountryTotals AS (
 -- Step 2: Rank players within these top countries based on weekly_wage_euro and exclude players with NULL weekly_wage_euro.
 RankedPlayers AS (
     SELECT p.nationality AS country, p.name, p.weekly_wage_euro,
-           ROW_NUMBER() OVER (PARTITION BY p.nationality ORDER BY p.weekly_wage_euro DESC) AS rank
+        ROW_NUMBER() OVER (PARTITION BY p.nationality ORDER BY p.weekly_wage_euro DESC) AS rank
     FROM players_combined p
     JOIN CountryTotals ct
       ON p.nationality = ct.country
