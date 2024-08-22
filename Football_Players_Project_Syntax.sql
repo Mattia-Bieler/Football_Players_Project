@@ -680,7 +680,7 @@ ON p.position = mp.position
 AND p.potential = mp.max_potential
 ORDER BY p.position;
 
--- Top 25 players with the biggest difference between their overall and potential ratings
+-- Top 25 players with the biggest difference between their overall and potential ratings.
 SELECT name, age, club, value_euro, weekly_wage_euro, overall, potential, (potential - overall) AS difference
 FROM players_combined
 ORDER BY difference DESC
