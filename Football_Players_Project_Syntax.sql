@@ -529,7 +529,7 @@ ORDER BY ppi.id ASC;
 SELECT * FROM public.players_combined;
 
 /*************************************************
-players_combined simply data checks and analysis.
+players_combined simple data checks and analysis.
 *************************************************/
 
 -- View the number of rows and columns in players_combined.
